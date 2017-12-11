@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Sign Up</string>
+    <string name="name_and_surname">Name and Surname</string>
+    <string name="age">Age</string>
+    <string name="level">Level</string>
     <string-array name="experience_array">
         <item>Beginner</item>
         <item>Intermediate</item>
