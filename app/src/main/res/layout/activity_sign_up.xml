@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="romeu.julia.signupactivity.SignUpActivity">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/age_text"
+        android:layout_alignStart="@+id/edit_name"
+        android:layout_marginBottom="60dp"
+        android:text="@string/name_and_surname" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="James White" />
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/age_text"
+        android:layout_below="@+id/text_name"
+        android:layout_marginTop="15dp"
+        android:text="@string/age" />
+
+    <EditText
+        android:id="@+id/age_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_name"
+        android:layout_below="@+id/edit_name"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="25" />
+
+    <Spinner
+        android:id="@+id/spinner_experience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/age_text"
+        android:layout_alignStart="@+id/age_text"
+        android:layout_below="@+id/age_text"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:id="@+id/text_experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/age_text"
+        android:layout_centerVertical="true"
+        android:text="@string/level" />
+
+</RelativeLayout>
