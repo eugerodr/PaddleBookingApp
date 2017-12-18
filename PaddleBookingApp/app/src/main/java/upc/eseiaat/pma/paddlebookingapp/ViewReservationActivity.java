@@ -24,6 +24,7 @@ public class ViewReservationActivity extends AppCompatActivity {
     private TextView date_reservation;
     private TextView player_1;
     private TextView player_2;
+    private boolean cancel_item=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +47,13 @@ public class ViewReservationActivity extends AppCompatActivity {
         cancel_reserv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cancel_reservation();
+                cancelReservation();
             }
         });
 
     }
 
-    private void cancel_reservation(){
+    private void cancelReservation(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewReservationActivity.this);
         builder.setTitle(R.string.confirm);
@@ -62,21 +63,22 @@ public class ViewReservationActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(ViewReservationActivity.this, R.string.cancelled,
                         Toast.LENGTH_LONG).show();
+                saveCancel();
                     }
                 });
 
-        builder.setNegativeButton(R.string.cancel, null);
-
+        builder.setNegativeButton(R.string.cancel, null); {
+        }
         builder.create().show();
             }
 
 
-    /*public void saveDate(View view) {
+    private void saveCancel() {
         // (III)
-        String new_data = date_reservation.getText().toString();
+        cancel_item=true;
         Intent data = new Intent();
-        data.putExtra("data", new_data);
+        data.putExtra("cancel_item", cancel_item);
         finish();
-    }*/
+    }
 
 }
