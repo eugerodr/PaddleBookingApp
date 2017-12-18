@@ -14,17 +14,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-/**
- * Created by Eugenia on 11/12/2017.
- */
-
 public class ViewReservationActivity extends AppCompatActivity {
 
-    //private String title = "Día y hora de la reserva...";
-    private TextView date_reservation;
-    private TextView player_1;
-    private TextView player_2;
-    private boolean cancel_item=false;
+    private Boolean cancel_item = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +28,14 @@ public class ViewReservationActivity extends AppCompatActivity {
         String data = intent.getStringExtra("data");
         String player_1_data = intent.getStringExtra("player_1_data");
         String player_2_data = intent.getStringExtra("player_2_data");
-        date_reservation = (TextView) findViewById(R.id.date_reservation);
+
+        TextView date_reservation = (TextView) findViewById(R.id.date_reservation);
         date_reservation.setText(data);
-        player_1 = (TextView) findViewById(R.id.player_1);
+
+        TextView player_1 = (TextView) findViewById(R.id.player_1);
         player_1.setText(player_1_data);
-        player_2 = (TextView) findViewById(R.id.player_2);
+
+        TextView player_2 = (TextView) findViewById(R.id.player_2);
         player_2.setText(player_2_data);
 
         Button cancel_reserv = (Button) findViewById(R.id.cancel);
@@ -63,22 +58,41 @@ public class ViewReservationActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(ViewReservationActivity.this, R.string.cancelled,
                         Toast.LENGTH_LONG).show();
-                saveCancel();
+                cancel_item=true;
+                Intent intent = new Intent();
+                intent.putExtra("cancel_item", true);
+                finish();
                     }
                 });
 
-        builder.setNegativeButton(R.string.cancel, null); {
-        }
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent();
+                intent.putExtra("cancel_item", false);
+                finish();
+            }
+        });
+
         builder.create().show();
+
             }
 
 
-    private void saveCancel() {
+    /*public void saveCancel(View view) {
         // (III)
-        cancel_item=true;
-        Intent data = new Intent();
-        data.putExtra("cancel_item", cancel_item);
+        Intent intent = new Intent();
+
+        if (cancel_item) {
+            intent.putExtra("cancel_item", true);
+        }
+        else {
+            intent.putExtra("cancel_item", false);
+        }
         finish();
-    }
+    }*/
 
 }
+
+//Cuando intento pasar a la actividad ViewReservationActivity el Boolean "cancel_item",
+// para ver si tengo que borrar o no el item de la lista, la aplicación peta.

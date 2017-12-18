@@ -9,19 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private ArrayList<String> lista_reservas;
+    private ArrayList<String> reservation_list;
     private ArrayAdapter adapter;
-    private ListView lista;
+    private ListView list;
     private String data;
     private String player_1_data="Julia";
     private String player_2_data="Marta";
+    private int pos;
 
 
     @Override
@@ -29,31 +28,28 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        lista = (ListView) findViewById(R.id.lista_reservas);
+        list = (ListView) findViewById(R.id.lista_reservas);
 
-        lista_reservas = new ArrayList<>();
-        lista_reservas.add("Martes, 5 de diciembre");
-        lista_reservas.add("Miércoles, 6 de diciembre");
-        lista_reservas.add("Jueves, 7 de diciembre");
-        lista_reservas.add("Viernes, 8 de diciembre");
+        reservation_list = new ArrayList<>();
+        reservation_list.add("Martes, 5 de diciembre");
+        reservation_list.add("Miércoles, 6 de diciembre");
+        reservation_list.add("Jueves, 7 de diciembre");
+        reservation_list.add("Viernes, 8 de diciembre");
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, lista_reservas);
-        lista.setAdapter(adapter);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, reservation_list);
+        list.setAdapter(adapter);
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //cojo los datos en la posicion del item
-                data = lista_reservas.get(position);
+                pos=position;
+                data = reservation_list.get(position);
                 // (I)
-                // 1. Crear un 'intent'
                 Intent intent = new Intent(getApplicationContext(), ViewReservationActivity.class);
-                // 2. Afegir paràmetres (dades extra) a la crida a l'activitat
                 intent.putExtra("data",  data);
                 intent.putExtra("player_1_data", player_1_data);
                 intent.putExtra("player_2_data", player_2_data);
-                // 3. Passar l'intent a Android perquè obri l'activitat
                 startActivityForResult(intent, 0);
             }
         });
@@ -68,15 +64,18 @@ public class MenuActivity extends AppCompatActivity {
         return true;
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         switch (requestCode) {
             case 0:
                 // (IV)
-                if (resultCode == AppCompatActivity.RESULT_OK) {
-                     data = data.getStringExtra("data");
-                    data.setText(data);
+                Intent intent_2 = getIntent();
+                Boolean item_value = getIntent().getExtras().getBoolean("cancel_item");
+
+                if (item_value) {
+                    reservation_list.remove(pos);
+                    adapter.notifyDataSetChanged();
                 }
         }
-    }*/
+    }
 }
