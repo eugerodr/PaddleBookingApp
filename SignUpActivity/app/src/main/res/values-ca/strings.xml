@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Registra\'t</string>
+    <string name="age">Edat</string>
+    <string name="level">Nivell</string>
+    <string name="name_and_surname">Nom i Cognom</string>
+    <string name="sign_up">Registra\'t</string>
+    <array name="experience_array">
+        <item>Principiant</item>
+        <item>Intermig</item>
+        <item>Avançat</item>
+        <item>Professional</item>
+    </array>
+</resources>
