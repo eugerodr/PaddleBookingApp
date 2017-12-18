@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">PaddleBookingApp</string>
+    <string name="app_name">PaddleBookingApp</string>
+    <string name="edit_profile">Edit my profile</string>
+    <string name="date_reservation">Day and Hour</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="cancel">Cancel reservation</string>
+    <string name="add_reservation">Add a reservation</string>
 </resources>
