@@ -69,9 +69,11 @@ public class MenuActivity extends AppCompatActivity {
         switch (requestCode) {
             case 0:
                 // (IV)
+                // Intento recuperar el valor de "cancel_item" y lo guardo en una nueva variable Boolean item_value
                 Intent intent_2 = getIntent();
                 Boolean item_value = getIntent().getExtras().getBoolean("cancel_item");
 
+               //Si el valor de item value es true, elimino el item de la lista
                 if (item_value) {
                     reservation_list.remove(pos);
                     adapter.notifyDataSetChanged();

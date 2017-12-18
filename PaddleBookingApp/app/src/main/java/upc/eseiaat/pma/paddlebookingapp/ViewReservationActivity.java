@@ -49,6 +49,8 @@ public class ViewReservationActivity extends AppCompatActivity {
     }
 
     private void cancelReservation(){
+        //Si le doy a cancelar reserva, el valor de cancel_item es true y se implementa finish(); para volver a MenuActivity
+        //Si no se cancela la reserva, cancel_item sigue teniendo siendo false e implemento finish(); para volver a MenuActivity
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewReservationActivity.this);
         builder.setTitle(R.string.confirm);
@@ -94,5 +96,4 @@ public class ViewReservationActivity extends AppCompatActivity {
 
 }
 
-//Cuando intento pasar a la actividad ViewReservationActivity el Boolean "cancel_item",
-// para ver si tengo que borrar o no el item de la lista, la aplicación peta.
+
