@@ -49,8 +49,7 @@ public class ViewReservationActivity extends AppCompatActivity {
     }
 
     private void cancelReservation(){
-        //Si le doy a cancelar reserva, el valor de cancel_item es true y se implementa finish(); para volver a MenuActivity
-        //Si no se cancela la reserva, cancel_item sigue teniendo siendo false e implemento finish(); para volver a MenuActivity
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewReservationActivity.this);
         builder.setTitle(R.string.confirm);
@@ -61,8 +60,9 @@ public class ViewReservationActivity extends AppCompatActivity {
                 Toast.makeText(ViewReservationActivity.this, R.string.cancelled,
                         Toast.LENGTH_LONG).show();
                 cancel_item=true;
-                Intent intent = new Intent();
-                intent.putExtra("cancel_item", true);
+                Intent data = new Intent();
+                data.putExtra("cancel_item", true);
+                setResult(RESULT_OK, data);
                 finish();
                     }
                 });
@@ -70,8 +70,9 @@ public class ViewReservationActivity extends AppCompatActivity {
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent();
-                intent.putExtra("cancel_item", false);
+                Intent data = new Intent();
+                data.putExtra("cancel_item", false);
+                setResult(RESULT_OK, data);
                 finish();
             }
         });
@@ -80,19 +81,6 @@ public class ViewReservationActivity extends AppCompatActivity {
 
             }
 
-
-    /*public void saveCancel(View view) {
-        // (III)
-        Intent intent = new Intent();
-
-        if (cancel_item) {
-            intent.putExtra("cancel_item", true);
-        }
-        else {
-            intent.putExtra("cancel_item", false);
-        }
-        finish();
-    }*/
 
 }
 

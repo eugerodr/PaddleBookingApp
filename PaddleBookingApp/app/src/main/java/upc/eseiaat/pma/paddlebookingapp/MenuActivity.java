@@ -16,7 +16,6 @@ public class MenuActivity extends AppCompatActivity {
 
     private ArrayList<String> reservation_list;
     private ArrayAdapter adapter;
-    private ListView list;
     private String data;
     private String player_1_data="Julia";
     private String player_2_data="Marta";
@@ -28,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        list = (ListView) findViewById(R.id.lista_reservas);
+        ListView list = (ListView) findViewById(R.id.lista_reservas);
 
         reservation_list = new ArrayList<>();
         reservation_list.add("Martes, 5 de diciembre");
@@ -36,7 +35,7 @@ public class MenuActivity extends AppCompatActivity {
         reservation_list.add("Jueves, 7 de diciembre");
         reservation_list.add("Viernes, 8 de diciembre");
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, reservation_list);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, reservation_list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,18 +64,17 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case 0:
-                // (IV)
-                // Intento recuperar el valor de "cancel_item" y lo guardo en una nueva variable Boolean item_value
-                Intent intent_2 = getIntent();
-                Boolean item_value = getIntent().getExtras().getBoolean("cancel_item");
 
-               //Si el valor de item value es true, elimino el item de la lista
-                if (item_value) {
-                    reservation_list.remove(pos);
-                    adapter.notifyDataSetChanged();
+                if (resultCode==RESULT_OK) {
+                    Boolean item_value = data.getBooleanExtra("cancel_item", false);
+
+                    if (item_value) {
+                        reservation_list.remove(pos);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
         }
     }
