@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PaddleBookingApp</string>
-    <string name="edit_profile">Edit my profile</string>
     <string name="date_reservation">Day and Hour</string>
     <string name="player_1">Player 1</string>
     <string name="player_2">Player 2</string>
@@ -11,4 +10,5 @@
     <string name="cancel">Cancel</string>
     <string name="cancelled">Reservation cancelled</string>
     <string name="erase">Remove reservation</string>
+    <string name="my_profile">My profile</string>
 </resources>
