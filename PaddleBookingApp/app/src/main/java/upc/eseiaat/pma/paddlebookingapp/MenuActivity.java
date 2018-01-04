@@ -1,6 +1,7 @@
 package upc.eseiaat.pma.paddlebookingapp;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +9,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -20,6 +26,8 @@ public class MenuActivity extends AppCompatActivity {
     private String player_1_data="Julia";
     private String player_2_data="Marta";
     private int pos;
+    private int id=0;
+
 
 
     @Override
@@ -28,12 +36,16 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         ListView list = (ListView) findViewById(R.id.lista_reservas);
+        FloatingActionButton btn_add_reservation = (FloatingActionButton) findViewById(R.id.btn_add_reservation);
 
         reservation_list = new ArrayList<>();
-        reservation_list.add("Martes, 5 de diciembre");
+
+       /* reservation_list.add("Martes, 5 de diciembre");
         reservation_list.add("Miércoles, 6 de diciembre");
         reservation_list.add("Jueves, 7 de diciembre");
-        reservation_list.add("Viernes, 8 de diciembre");
+        reservation_list.add("Viernes, 8 de diciembre");*/
+
+
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, reservation_list);
         list.setAdapter(adapter);
@@ -50,6 +62,17 @@ public class MenuActivity extends AppCompatActivity {
                 intent.putExtra("player_1_data", player_1_data);
                 intent.putExtra("player_2_data", player_2_data);
                 startActivityForResult(intent, 0);
+            }
+        });
+
+        btn_add_reservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Write a message to the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference(String.format("Reservation %d",id));
+                myRef.setValue("1");
+                id++;
             }
         });
 
