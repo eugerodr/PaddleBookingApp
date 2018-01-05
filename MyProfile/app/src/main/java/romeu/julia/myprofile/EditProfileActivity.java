@@ -1,4 +1,4 @@
-package romeu.julia.signupactivity;
+package romeu.julia.myprofile;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,21 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-public class EditUserActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     private int new_user_level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_user);
+        setContentView(R.layout.activity_edit_profile);
 
         //Referencias de los elementos del Layout
         EditText edit_name = (EditText) findViewById(R.id.edit_name);
