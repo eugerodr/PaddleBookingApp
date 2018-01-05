@@ -10,7 +10,7 @@
         android:id="@+id/txt_name_surname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_sign_up"
+        android:layout_alignEnd="@+id/btn_edit_profile"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="90dp"
@@ -62,7 +62,7 @@
         android:text="TextView" />
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
