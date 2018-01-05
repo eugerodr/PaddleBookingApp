@@ -5,6 +5,7 @@
     <string name="level">Level</string>
     <string name="sign_up">Sign Up</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
     <array name="experience_array">
         <item>Beginner</item>
         <item>Intermediate</item>

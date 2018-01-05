@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="romeu.julia.signupactivity.EditUserActivity">
+    tools:context="romeu.julia.signupactivity.SignUpActivity">
 
     <TextView
         android:id="@+id/text_name"
@@ -64,21 +64,11 @@
         android:text="@string/level" />
 
     <Button
-        android:id="@+id/btn_edit_profile"
+        android:id="@+id/btn_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="76dp"
-        android:text="@string/edit_profile" />
-
-    <EditText
-        android:id="@+id/edit_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_experience"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="@string/save" />
 </RelativeLayout>

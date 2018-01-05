@@ -11,4 +11,6 @@
         <item>Avanzado</item>
         <item>Profesional</item>
     </array>
+    <string name="save">Guardar</string>
+    <string name="edit_profile">Editar Perfil</string>
 </resources>

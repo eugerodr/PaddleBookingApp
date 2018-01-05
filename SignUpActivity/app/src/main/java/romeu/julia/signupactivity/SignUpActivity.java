@@ -12,13 +12,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
+    private String user_name;
+    private int user_age;
+    private int user_level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-
 
         final Spinner spinner_experience = (Spinner) findViewById(R.id.spinner_experience);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -29,40 +30,28 @@ public class SignUpActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_experience.setAdapter(adapter);
 
+
         //TODO: Obtener la información del usuario
 
         EditText edit_name = (EditText) findViewById(R.id.edit_name);
-        final String user_name = edit_name.getText().toString();
+        user_name = edit_name.getText().toString();
 
         EditText edit_age = (EditText) findViewById(R.id.edit_age);
-        final int user_age = Integer.parseInt(edit_age.getText().toString());
+        user_age = Integer.parseInt(edit_age.getText().toString());
 
 
         //TODO: Obtener el nivel de experiencia seleccionado por el usuario
 
-        spinner_experience.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner_experience.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-
-                int user_level = (int) parent.getItemAtPosition(pos);
-
-                Toast.makeText(SignUpActivity.this,"Selected:" + user_level, Toast.LENGTH_SHORT).show();
-
+            public void onItemSelected (AdapterView<?> parentView, View view, int pos, long id) {
+                user_level = spinner_experience.getSelectedItemPosition();
+                //Toast.makeText(SignUpActivity.this,"Selected:" + pos, Toast.LENGTH_SHORT).show();
             }
-        });
 
-        //TODO: Preparar la información a enviar a otras actividades cuando se acaba de registrar
-        Button btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
-        btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                intent.putExtra("user_name", user_name);
-                intent.putExtra("user_age", user_age);
-                //intent.putExtra("user_level", user_level);
-
-                startActivityForResult(intent,0);
             }
         });
 
