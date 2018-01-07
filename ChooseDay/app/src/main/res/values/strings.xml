@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">ChooseDayActivity</string>
     <string name="indication">Clicar para editar la fecha:</string>
+    <string name="date"></string>
 </resources>

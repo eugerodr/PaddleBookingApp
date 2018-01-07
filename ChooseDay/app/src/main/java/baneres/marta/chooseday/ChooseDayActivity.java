@@ -1,10 +1,10 @@
 package baneres.marta.chooseday;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +17,7 @@ public class ChooseDayActivity extends AppCompatActivity {
 
     EditText date;
     DatePickerDialog datePickerDialog;
-    Button btn_add;
+    Button btn_next;
     TextView txt_select_day;
 
     @Override
@@ -25,8 +25,7 @@ public class ChooseDayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_day);
         date = (EditText) findViewById(R.id.date);
-        btn_add = (Button) findViewById(R.id.btn_add);
-        btn_add.setOnClickListener(new View.OnClickListener() {
+        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar c = Calendar.getInstance();
@@ -47,5 +46,26 @@ public class ChooseDayActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        btn_next = (Button) findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedDay();
+            }
+        });
     }
+
+    private void selectedDay() {
+        // (I)
+        // 1. Crear un 'intent'
+        Intent intent = new Intent(this, SelectedDayActivity.class);
+        // 2. Afegir paràmetres (dades extra) a la crida a l'activitat
+        /*intent.putExtra("date", date);*/
+        // 3. Passar l'intent a Android perquè obri l'activitat
+        startActivityForResult (intent,0);
+    }
+
 }
+
+
+
