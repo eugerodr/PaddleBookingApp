@@ -48,13 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         int user_level = intent.getIntExtra("user_level", 0);
         spinner_experience.setSelection(user_level);
-    }
 
-
-
-    public void saveProfile (View view) {
-        String new_user_name = edit_name.getText().toString();
-        int new_user_age = Integer.parseInt(edit_age.getText().toString());
         spinner_experience.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View view, int pos, long id) {
@@ -65,12 +59,18 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
                 //Do nothing
             }
-
         });
+    }
+
+
+    public void saveProfile (View view) {
+        String new_user_name = edit_name.getText().toString();
+        int new_user_age = Integer.parseInt(edit_age.getText().toString());
+
 
         Intent data = new Intent();
         data.putExtra("user_name", new_user_name);
-        data.putExtra("user age", new_user_age);
+        data.putExtra("user_age", new_user_age);
         data.putExtra("user_level", new_user_level);
         setResult(RESULT_OK, data);
         finish();
