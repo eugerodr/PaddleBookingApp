@@ -37,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        databaseUsers = FirebaseDatabase.getInstance().getReference("users");
+        databaseUsers = FirebaseDatabase.getInstance().getReference(FirebaseReferences.usersReference);
 
         edit_name = (EditText) findViewById(R.id.edit_name);
         edit_age = (EditText) findViewById(R.id.edit_age);
