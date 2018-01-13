@@ -20,6 +20,8 @@
         <activity android:name=".MenuActivity"/>
         <activity android:name=".MyProfileActivity"/>
         <activity android:name=".EditProfileActivity"/>
+        <activity android:name=".ChooseDayActivity"/>
+        <activity android:name=".SelectedDayActivity"/>
 
     </application>
 

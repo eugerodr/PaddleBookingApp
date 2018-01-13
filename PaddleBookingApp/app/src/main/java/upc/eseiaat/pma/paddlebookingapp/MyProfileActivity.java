@@ -52,7 +52,7 @@ public class MyProfileActivity extends AppCompatActivity {
         //txt_age.setText(Integer.toString(user_age));
         String [] list_level = getResources().getStringArray(R.array.experience_array);
         //txt_level.setText(list_level[user_level]);
-        
+
 
         //databaseUsers = FirebaseDatabase.getInstance().getReference().child(id);
 

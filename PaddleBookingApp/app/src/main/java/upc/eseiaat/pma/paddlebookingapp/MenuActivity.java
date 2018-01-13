@@ -53,7 +53,9 @@ public class MenuActivity extends AppCompatActivity {
         btn_add_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addReservation();
+                Intent intent = new Intent(getApplicationContext(), ChooseDayActivity.class);
+                startActivityForResult(intent,0);
+                //addReservation();
             }
         });
 
