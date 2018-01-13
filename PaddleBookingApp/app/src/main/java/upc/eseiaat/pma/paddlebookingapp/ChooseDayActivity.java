@@ -18,6 +18,7 @@ public class ChooseDayActivity extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     Button btn_next;
     TextView txt_select_day;
+    private String selected_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class ChooseDayActivity extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
                                 date.setText(dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + year);
+                                selected_date= dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year;
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -67,9 +70,7 @@ public class ChooseDayActivity extends AppCompatActivity {
     private void selectedDay() {
         // (I)
         Intent intent = new Intent(this, ChooseHourActivity.class);
-        // 2. Afegir paràmetres (dades extra) a la crida a l'activitat
-        /*intent.putExtra("date", date);*/
-        // 3. Passar l'intent a Android perquè obri l'activitat
+        intent.putExtra("selected_date", selected_date);
         startActivityForResult (intent,0);
     }
 

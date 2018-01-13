@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewReservationActivity" />
-        <activity android:name=".MenuActivity"/>
-        <activity android:name=".MyProfileActivity"/>
-        <activity android:name=".EditProfileActivity"/>
-        <activity android:name=".ChooseDayActivity"/>
-        <activity android:name=".ChooseHourActivity"/>
-
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".MyProfileActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".ChooseDayActivity" />
+        <activity android:name=".ChooseHourActivity" />
+        <activity android:name=".ViewHourActivity"></activity>
     </application>
 
 </manifest>

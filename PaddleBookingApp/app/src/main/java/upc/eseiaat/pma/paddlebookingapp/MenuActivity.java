@@ -55,7 +55,6 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChooseDayActivity.class);
                 startActivityForResult(intent,0);
-                //addReservation();
             }
         });
 
@@ -108,30 +107,6 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 }
         }
-    }
-
-    private void addReservation() {
-
-        String hour = "15:00h";
-        String day = "Monday";
-        String month = "May";
-        String id = databaseReservations.push().getKey();
-        String user1_id = "Whatever";
-        String user2_id = "Whatever";
-
-        if (!hour.isEmpty() && !day.isEmpty() && !month.isEmpty()) {
-
-            Reservations reservation = new Reservations(id, hour, day, month, user1_id, user2_id);
-            databaseReservations.child(id).setValue(reservation);
-
-            Toast.makeText(this, R.string.added_reservation, Toast.LENGTH_SHORT).show();
-        }
-
-        else {
-            Toast.makeText(this, R.string.missing_data, Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
 }

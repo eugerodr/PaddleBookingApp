@@ -25,4 +25,6 @@
     <string name="select_day">Seleccionar día</string>
     <string name="select_hour">Seleccionar hora</string>
     <string name="continue_to">Continuar</string>
+    <string name="date">Fecha</string>
+    <string name="hour">Hora</string>
 </resources>
