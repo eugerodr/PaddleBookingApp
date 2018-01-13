@@ -27,6 +27,8 @@
     <string name="hour">Hour</string>
     <string name="date">Date</string>
     <string name="join">Join</string>
+    <string name="my_reservations">My reservations</string>
+    <string name="name">Name</string>
     <array name="experience_array">
         <item>Beginner</item>
         <item>Intermediate</item>
