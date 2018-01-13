@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.eseiaat.pma.paddlebookingapp.SignUpActivity">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:text="@string/name_and_surname"
+        android:layout_alignBottom="@+id/edit_name"
+        android:layout_alignLeft="@+id/edit_name"
+        android:layout_alignStart="@+id/edit_name" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="James White" />
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/age"
+        android:layout_below="@+id/text_name"
+        android:layout_alignLeft="@+id/edit_name"
+        android:layout_alignStart="@+id/edit_name" />
+
+    <EditText
+        android:id="@+id/edit_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="25"
+        android:layout_below="@+id/text_age"
+        android:layout_alignLeft="@+id/text_age"
+        android:layout_alignStart="@+id/text_age"
+        android:layout_marginTop="12dp" />
+
+    <Spinner
+        android:id="@+id/spinner_experience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_experience"
+        android:layout_alignLeft="@+id/text_experience"
+        android:layout_alignStart="@+id/text_experience"
+        android:layout_marginTop="12dp"
+        android:layout_alignRight="@+id/edit_age"
+        android:layout_alignEnd="@+id/edit_age" />
+
+    <TextView
+        android:id="@+id/text_experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/level"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/edit_age"
+        android:layout_alignStart="@+id/edit_age" />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:text="@string/sign_up" />
+
+</RelativeLayout>

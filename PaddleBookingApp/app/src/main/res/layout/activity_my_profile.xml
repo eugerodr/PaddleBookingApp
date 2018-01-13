@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.eseiaat.pma.paddlebookingapp.MyProfileActivity">
+
+    <TextView
+        android:id="@+id/txt_name_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/name_and_surname"
+
+        android:layout_alignLeft="@+id/btn_edit_profile"
+        android:layout_alignStart="@+id/btn_edit_profile" />
+
+    <TextView
+        android:id="@+id/txt_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/txt_name_surname"
+        android:layout_alignLeft="@+id/txt_name_surname"
+        android:layout_alignStart="@+id/txt_name_surname"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/txt_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:layout_below="@+id/txt_user_name"
+        android:layout_alignLeft="@+id/txt_user_name"
+        android:layout_alignStart="@+id/txt_user_name"
+        android:layout_marginTop="19dp" />
+
+    <TextView
+        android:id="@+id/txt_user_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/txt_age"
+        android:layout_alignLeft="@+id/txt_age"
+        android:layout_alignStart="@+id/txt_age"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:id="@+id/txt_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/level"
+
+        android:layout_below="@+id/txt_user_age"
+        android:layout_alignLeft="@+id/txt_user_age"
+        android:layout_alignStart="@+id/txt_user_age"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/txt_user_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+
+        android:layout_below="@+id/txt_level"
+        android:layout_alignLeft="@+id/txt_level"
+        android:layout_alignStart="@+id/txt_level"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/btn_edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:onClick="editProfile"
+        android:text="@string/edit_profile" />
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_edit_profile"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/btn_edit_profile"
+        android:layout_marginBottom="15dp"
+        android:text="@string/done" />
+
+</RelativeLayout>
