@@ -2,7 +2,6 @@ package upc.eseiaat.pma.paddlebookingapp;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +27,10 @@ public class ChooseDayActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         date = (EditText) findViewById(R.id.date);
+        btn_next = (Button) findViewById(R.id.btn_next);
+
+        btn_next.setVisibility(View.INVISIBLE);
+
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,21 +50,23 @@ public class ChooseDayActivity extends AppCompatActivity {
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
+
+                btn_next.setVisibility(View.VISIBLE);
             }
         });
-        btn_next = (Button) findViewById(R.id.btn_next);
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedDay();
+
+                    selectedDay();
             }
         });
     }
 
     private void selectedDay() {
         // (I)
-        // 1. Crear un 'intent'
-        Intent intent = new Intent(this, SelectedDayActivity.class);
+        Intent intent = new Intent(this, ChooseHourActivity.class);
         // 2. Afegir paràmetres (dades extra) a la crida a l'activitat
         /*intent.putExtra("date", date);*/
         // 3. Passar l'intent a Android perquè obri l'activitat

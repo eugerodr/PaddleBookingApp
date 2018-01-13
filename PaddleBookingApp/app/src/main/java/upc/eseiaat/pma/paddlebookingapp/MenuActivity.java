@@ -82,8 +82,6 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
-        Toast.makeText(this, "Funciona", Toast.LENGTH_SHORT).show();
         return true;
     }
 

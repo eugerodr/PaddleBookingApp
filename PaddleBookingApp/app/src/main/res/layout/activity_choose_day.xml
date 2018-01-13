@@ -13,11 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/date"
         android:layout_alignStart="@+id/date"
-        android:text="Select Date:"
-        android:textColor="#0f0286"
+        android:text="@string/select_day"
+        android:textColor="@android:color/black"
         android:textColorHint="#0f0286"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/date"
@@ -41,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp"
-        android:text="CONTINUE" />
+        android:text="@string/continue_to" />
 
 </RelativeLayout>
 
