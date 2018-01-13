@@ -4,5 +4,7 @@
 
     <item
         android:id="@+id/edit_profile"
+        android:checkable="false"
+        android:enabled="true"
         android:title="@string/edit_profile" />
 </menu>

@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -76,7 +78,17 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+
+        Toast.makeText(this, "Funciona", Toast.LENGTH_SHORT).show();
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent_menu_to_profile = new Intent(getApplicationContext(), MyProfileActivity.class);
+        startActivity(intent_menu_to_profile);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -118,4 +130,5 @@ public class MenuActivity extends AppCompatActivity {
 
 
     }
+
 }
