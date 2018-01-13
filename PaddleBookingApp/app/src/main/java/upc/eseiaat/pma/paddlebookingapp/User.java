@@ -15,6 +15,22 @@ class User {
 
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+
+    public void setUserLevel(int userLevel) {
+        this.userLevel = userLevel;
+    }
+
     User(String userId, String userName, int userAge, int userLevel) {
         this.userId = userId;
         this.userName = userName;

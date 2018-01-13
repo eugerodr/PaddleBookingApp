@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     Button btn_sign_up;
 
     DatabaseReference databaseUsers;
+    private String id;
 
 
     @Override
@@ -73,16 +74,16 @@ public class SignUpActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(Integer.toString(user_age)) && !TextUtils.isEmpty(Integer.toString(user_level))) {
 
             //Create a unic id for each user
-            String id = databaseUsers.push().getKey();
+            id = databaseUsers.push().getKey();
 
             User user = new User(id, user_name, user_age, user_level);
 
             databaseUsers.child(id).setValue(user);
 
-            Toast.makeText(this, "User added", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.user_added, Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(this, "You should enter a value for all", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.enter_value, Toast.LENGTH_LONG).show();
         }
 
 

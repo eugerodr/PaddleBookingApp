@@ -19,4 +19,7 @@
     <string name="name_and_surname">Nombre y apellido</string>
     <string name="save">Guardar</string>
     <string name="sign_up">Registrarse</string>
+    <string name="done">Listo</string>
+    <string name="enter_value">Debe entrar un valor para cada campo</string>
+    <string name="user_added">Usuario añadido</string>
 </resources>
