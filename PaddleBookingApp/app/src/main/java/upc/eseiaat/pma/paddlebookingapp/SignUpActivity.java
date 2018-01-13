@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
                 addUser();
                 // (I)
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                intent.putExtra("user_id",  id);
                 startActivityForResult(intent, 0);
             }
         });

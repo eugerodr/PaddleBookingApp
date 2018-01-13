@@ -27,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     private String player_1_data="Julia";
     private String player_2_data="Marta";
     private int pos;
+    private String id;
 
     DatabaseReference databaseReservations;
 
@@ -37,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
 
         // (II)
         Intent intent = getIntent();
+        id = intent.getStringExtra("user_id");
 
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
 
@@ -87,6 +89,7 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent_menu_to_profile = new Intent(getApplicationContext(), MyProfileActivity.class);
+        intent_menu_to_profile.putExtra("user_id", id);
         startActivity(intent_menu_to_profile);
         return super.onOptionsItemSelected(item);
     }

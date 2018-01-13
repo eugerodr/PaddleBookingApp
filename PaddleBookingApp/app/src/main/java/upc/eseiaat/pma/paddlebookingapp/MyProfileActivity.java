@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.EventListener;
@@ -28,7 +29,7 @@ public class MyProfileActivity extends AppCompatActivity {
     DatabaseReference databaseUsers;
     User user;
     private ValueEventListener eventListener;
-
+    private String id;
 
 
     @Override
@@ -38,6 +39,9 @@ public class MyProfileActivity extends AppCompatActivity {
 
         // (II)
         Intent intent_menu_to_profile = getIntent();
+        id = intent_menu_to_profile.getStringExtra("user_id");
+
+        databaseUsers = FirebaseDatabase.getInstance().getReference().child(id);
 
         eventListener = new ValueEventListener() {
             @Override
@@ -53,6 +57,8 @@ public class MyProfileActivity extends AppCompatActivity {
 
             }
         };
+
+        //databaseUsers.addValueEventListener(eventListener);
 
 
         //Referencias de los elementos del Layout
