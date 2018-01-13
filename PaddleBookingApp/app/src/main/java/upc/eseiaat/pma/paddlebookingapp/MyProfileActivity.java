@@ -31,7 +31,6 @@ public class MyProfileActivity extends AppCompatActivity {
     private ValueEventListener eventListener;
     private String id;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,25 +39,6 @@ public class MyProfileActivity extends AppCompatActivity {
         // (II)
         Intent intent_menu_to_profile = getIntent();
         id = intent_menu_to_profile.getStringExtra("user_id");
-
-        databaseUsers = FirebaseDatabase.getInstance().getReference().child(id);
-
-        eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                txt_user_name.setText(user.getUserName());
-                txt_age.setText(user.getUserAge());
-                txt_level.setText(user.getUserLevel());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-
-        //databaseUsers.addValueEventListener(eventListener);
 
 
         //Referencias de los elementos del Layout
@@ -72,6 +52,30 @@ public class MyProfileActivity extends AppCompatActivity {
         //txt_age.setText(Integer.toString(user_age));
         String [] list_level = getResources().getStringArray(R.array.experience_array);
         //txt_level.setText(list_level[user_level]);
+        
+
+        //databaseUsers = FirebaseDatabase.getInstance().getReference().child(id);
+
+        eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+
+                    String value_name = dataSnapshot.getValue(String.class);
+                    Integer value_age = dataSnapshot.getValue(Integer.class);
+                    Integer value_level = dataSnapshot.getValue(Integer.class);
+
+                    txt_user_name.setText(value_name);
+                    txt_age.setText(value_age);
+                    txt_level.setText(value_level);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
 
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +84,7 @@ public class MyProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     public void editProfile (View view) {
