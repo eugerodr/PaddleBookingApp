@@ -28,6 +28,10 @@ public class MenuActivity extends AppCompatActivity {
     private String player_2_data="Marta";
     private int pos;
     private String id;
+    private String hour;
+    private String date;
+    private Intent intent_go_back;
+    private boolean reservation_added=false;
 
     DatabaseReference databaseReservations;
 
@@ -58,6 +62,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        intent_go_back = getIntent();
+        hour = intent_go_back.getStringExtra("hour");
+        date = intent_go_back.getStringExtra("date");
+        reservation_added = intent.getBooleanExtra("reservation_added", false);
+
+        if (reservation_added) {
+        addItem(); }
+
+
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -74,6 +87,11 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void addItem() {
+        reservation_list.add(String.format(date) + String.format("   ") + String.format(hour));
+        adapter.notifyDataSetChanged();
     }
 
 
@@ -108,5 +126,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
         }
     }
+
 
 }

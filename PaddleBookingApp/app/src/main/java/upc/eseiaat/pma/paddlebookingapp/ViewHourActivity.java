@@ -15,8 +15,11 @@ public class ViewHourActivity extends AppCompatActivity {
 
     private String date;
     private String hour;
+    private String user;
+    private boolean reservation_added;
 
     DatabaseReference databaseReservations;
+    DatabaseReference databaseUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class ViewHourActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
+        databaseUsers = FirebaseDatabase.getInstance().getReference("user");
 
         TextView reservation_hour = (TextView) findViewById(R.id.reservation_hour);
         TextView reservation_date = (TextView) findViewById(R.id.reservation_date);
@@ -38,6 +42,10 @@ public class ViewHourActivity extends AppCompatActivity {
 
         date = intent.getStringExtra("selected_date");
         reservation_date.setText(date);
+
+        //user = databaseUsers.child(userName);
+
+
 
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +63,7 @@ public class ViewHourActivity extends AppCompatActivity {
         String day = parts[0];
         String month = parts[1];
         String id = databaseReservations.push().getKey();
+        //String user1_id = databaseUsers.getDatabase(userName);
         String user1_id = "Whatever";
         String user2_id = "Whatever";
 
@@ -64,6 +73,14 @@ public class ViewHourActivity extends AppCompatActivity {
             databaseReservations.child(id).setValue(reservation);
 
             Toast.makeText(this, R.string.added_reservation, Toast.LENGTH_SHORT).show();
+
+            reservation_added=true;
+
+            Intent intent_go_back = new Intent(getApplicationContext(), MenuActivity.class);
+            intent_go_back.putExtra("hour", hour);
+            intent_go_back.putExtra("date", date);
+            intent_go_back.putExtra("reservation_added", true);
+            startActivity(intent_go_back);
         }
 
         else {
