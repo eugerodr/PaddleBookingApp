@@ -8,7 +8,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ViewHourActivity extends AppCompatActivity {
+
+    private String date;
+    private String hour;
+
+    DatabaseReference databaseReservations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,32 +25,35 @@ public class ViewHourActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
+
         TextView reservation_hour = (TextView) findViewById(R.id.reservation_hour);
         TextView reservation_date = (TextView) findViewById(R.id.reservation_date);
         TextView reservarion_player1 = (TextView) findViewById(R.id.reservation_player1);
 
         Button btn_join = (Button) findViewById(R.id.btn_join);
 
-        String hour = intent.getStringExtra("selected_hour");
+        hour = intent.getStringExtra("selected_hour");
         reservation_hour.setText(hour);
 
-        String date = intent.getStringExtra("selected_date");
+        date = intent.getStringExtra("selected_date");
         reservation_date.setText(date);
 
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addReservation();
+                addReservation();
             }
         });
 
     }
 
-    /*private void addReservation() {
+    private void addReservation() {
 
-        String hour = "15:00h";
-        String day = "Monday";
-        String month = "May";
+        String [] parts = date.split("/");
+
+        String day = parts[0];
+        String month = parts[1];
         String id = databaseReservations.push().getKey();
         String user1_id = "Whatever";
         String user2_id = "Whatever";
@@ -58,7 +69,5 @@ public class ViewHourActivity extends AppCompatActivity {
         else {
             Toast.makeText(this, R.string.missing_data, Toast.LENGTH_SHORT).show();
         }
-
-
-    }*/
+    }
 }
