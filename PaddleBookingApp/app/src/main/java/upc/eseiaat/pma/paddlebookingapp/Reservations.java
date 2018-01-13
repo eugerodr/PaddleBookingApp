@@ -4,22 +4,22 @@ package upc.eseiaat.pma.paddlebookingapp;
  * Created by Eugenia on 09/01/2018.
  */
 
-public class Reservations {
+class Reservations {
 
-    String reservationId;
-    String reservationHour;
-    String reservationDay;
-    String reservationMonth;
-    String user1_id;
-    String user2_id;
+    private String reservationId;
+    private String reservationHour;
+    private String reservationDay;
+    private String reservationMonth;
+    private String user1_id;
+    private String user2_id;
 
 
     public Reservations() {
 
     }
 
-    public Reservations(String reservation_id, String reservation_hour, String reservation_day,
-                        String reservation_month, String user1_id, String user2_id) {
+    Reservations(String reservation_id, String reservation_hour, String reservation_day,
+                 String reservation_month, String user1_id, String user2_id) {
 
         this.reservationId = reservation_id;
         this.reservationHour = reservation_hour;

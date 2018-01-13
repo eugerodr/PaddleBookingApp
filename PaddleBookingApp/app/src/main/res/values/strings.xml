@@ -13,4 +13,14 @@
     <string name="erase">Remove reservation</string>
     <string name="missing_data">Please, complete all the fields</string>
     <string name="added_reservation">Reservation added</string>
+    <string name="name_and_surname">Name and surname</string>
+    <string name="age">Age</string>
+    <string name="level">Level</string>
+    <string name="sign_up">Sign up</string>
+    <array name="experience_array">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+        <item>Professional</item>
+    </array>
 </resources>

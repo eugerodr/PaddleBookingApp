@@ -33,6 +33,9 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // (II)
+        Intent intent = getIntent();
+
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
 
         ListView list = (ListView) findViewById(R.id.lista_reservas);
