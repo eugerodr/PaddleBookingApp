@@ -10,11 +10,14 @@
         android:id="@+id/txt_name_surname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_edit_profile"
+        android:layout_alignStart="@+id/btn_edit_profile"
+
         android:layout_marginTop="52dp"
         android:text="@string/name_and_surname"
-
-        android:layout_alignLeft="@+id/btn_edit_profile"
-        android:layout_alignStart="@+id/btn_edit_profile" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/txt_user_name"
@@ -30,11 +33,13 @@
         android:id="@+id/txt_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/age"
-        android:layout_below="@+id/txt_user_name"
         android:layout_alignLeft="@+id/txt_user_name"
         android:layout_alignStart="@+id/txt_user_name"
-        android:layout_marginTop="19dp" />
+        android:layout_below="@+id/txt_user_name"
+        android:layout_marginTop="19dp"
+        android:text="@string/age"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txt_user_age"
@@ -50,12 +55,14 @@
         android:id="@+id/txt_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/level"
-
-        android:layout_below="@+id/txt_user_age"
         android:layout_alignLeft="@+id/txt_user_age"
+
         android:layout_alignStart="@+id/txt_user_age"
-        android:layout_marginTop="25dp" />
+        android:layout_below="@+id/txt_user_age"
+        android:layout_marginTop="25dp"
+        android:text="@string/level"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txt_user_level"
@@ -72,20 +79,32 @@
         android:id="@+id/btn_edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_user_level"
+        android:layout_marginLeft="57dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/colorAccent"
         android:onClick="editProfile"
-        android:text="@string/edit_profile" />
+        android:text="@string/edit_profile"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_edit_profile"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/btn_edit_profile"
-        android:layout_marginBottom="15dp"
-        android:text="@string/done" />
+        android:layout_alignBaseline="@+id/btn_edit_profile"
+        android:layout_alignBottom="@+id/btn_edit_profile"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/btn_edit_profile"
+        android:layout_toRightOf="@+id/btn_edit_profile"
+        android:background="@color/colorAccent"
+        android:text="@string/done"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
 </RelativeLayout>

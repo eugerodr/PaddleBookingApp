@@ -10,44 +10,54 @@
         android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:text="@string/name_and_surname"
-        android:layout_above="@+id/text_age"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_above="@+id/edit_name"
         android:layout_alignLeft="@+id/edit_name"
-        android:layout_alignStart="@+id/edit_name"
-        android:layout_marginBottom="50dp" />
+        android:layout_alignStart="@+id/edit_name" />
 
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/text_age"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="James White"
-        android:layout_above="@+id/text_age"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp" />
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/text_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:text="@string/age"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:layout_above="@+id/edit_age"
         android:layout_alignLeft="@+id/edit_name"
-        android:layout_alignStart="@+id/edit_name"
-        android:layout_marginBottom="26dp" />
+        android:layout_alignStart="@+id/edit_name" />
 
     <EditText
         android:id="@+id/edit_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="25"
         android:layout_above="@+id/text_experience"
         android:layout_alignLeft="@+id/text_age"
         android:layout_alignStart="@+id/text_age"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="25"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:textStyle="italic" />
 
     <Spinner
         android:id="@+id/spinner_experience"
@@ -64,19 +74,23 @@
         android:id="@+id/text_experience"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/level"
         android:layout_above="@+id/spinner_experience"
         android:layout_alignLeft="@+id/edit_age"
         android:layout_alignStart="@+id/edit_age"
-        android:layout_marginBottom="14dp" />
+        android:layout_marginBottom="14dp"
+        android:text="@string/level"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="86dp"
+        android:background="@color/colorAccent"
         android:onClick="saveProfile"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PaddleBookingApp</string>
-    <string name="edit_profile">Editar mi perfil</string>
+    <string name="edit_profile">Editar perfil</string>
     <string name="date_reservation">Hora y Día</string>
     <string name="player_1">Jugador 1</string>
     <string name="player_2">Jugador 2</string>
@@ -27,4 +27,7 @@
     <string name="continue_to">Continuar</string>
     <string name="date">Fecha</string>
     <string name="hour">Hora</string>
+    <string name="join">Unirme</string>
+    <string name="my_reservations">Mis reservas</string>
+    <string name="name">Nombre</string>
 </resources>
