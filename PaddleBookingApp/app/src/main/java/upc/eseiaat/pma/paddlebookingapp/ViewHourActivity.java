@@ -15,7 +15,7 @@ public class ViewHourActivity extends AppCompatActivity {
 
     private String date;
     private String hour;
-    private String user;
+    //private String user;
     private boolean reservation_added;
 
     DatabaseReference databaseReservations;
@@ -26,25 +26,21 @@ public class ViewHourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_hour);
 
-        Intent intent = getIntent();
+        Intent intent_3 = getIntent();
+        date = intent_3.getStringExtra("date");
+        hour = intent_3.getStringExtra("hour");
 
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
         databaseUsers = FirebaseDatabase.getInstance().getReference("user");
 
         TextView reservation_hour = (TextView) findViewById(R.id.reservation_hour);
-        TextView reservation_date = (TextView) findViewById(R.id.reservation_date);
-        TextView reservarion_player1 = (TextView) findViewById(R.id.reservation_player1);
-
-        Button btn_join = (Button) findViewById(R.id.btn_join);
-
-        hour = intent.getStringExtra("selected_hour");
         reservation_hour.setText(hour);
 
-        date = intent.getStringExtra("selected_date");
+        TextView reservation_date = (TextView) findViewById(R.id.reservation_date);
         reservation_date.setText(date);
+        //TextView reservarion_player1 = (TextView) findViewById(R.id.reservation_player1);
 
-        //user = databaseUsers.child(userName);
-
+        Button btn_join = (Button) findViewById(R.id.btn_join);
 
 
         btn_join.setOnClickListener(new View.OnClickListener() {
@@ -58,29 +54,24 @@ public class ViewHourActivity extends AppCompatActivity {
 
     private void addReservation() {
 
-        String [] parts = date.split("/");
-
-        String day = parts[0];
-        String month = parts[1];
         String id = databaseReservations.push().getKey();
         //String user1_id = databaseUsers.getDatabase(userName);
         String user1_id = "Whatever";
         String user2_id = "Whatever";
 
-        if (!hour.isEmpty() && !day.isEmpty() && !month.isEmpty()) {
+        if (!hour.isEmpty() && !date.isEmpty()) {
 
-            Reservations reservation = new Reservations(id, hour, day, month, user1_id, user2_id);
+            Reservations reservation = new Reservations(id, hour, date, user1_id, user2_id);
             databaseReservations.child(id).setValue(reservation);
 
             Toast.makeText(this, R.string.added_reservation, Toast.LENGTH_SHORT).show();
 
             reservation_added=true;
 
-            Intent intent_go_back = new Intent(getApplicationContext(), MenuActivity.class);
-            intent_go_back.putExtra("hour", hour);
-            intent_go_back.putExtra("date", date);
-            intent_go_back.putExtra("reservation_added", true);
-            startActivity(intent_go_back);
+            Intent intent_3 = new Intent();
+            intent_3.putExtra("reservation_added", true);
+            setResult(RESULT_OK, intent_3);
+            finish();
         }
 
         else {

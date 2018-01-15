@@ -8,8 +8,7 @@ class Reservations {
 
     private String reservationId;
     private String reservationHour;
-    private String reservationDay;
-    private String reservationMonth;
+    private String reservationDate;
     private String user1_id;
     private String user2_id;
 
@@ -18,13 +17,12 @@ class Reservations {
 
     }
 
-    Reservations(String reservation_id, String reservation_hour, String reservation_day,
-                 String reservation_month, String user1_id, String user2_id) {
+    Reservations(String reservation_id, String reservation_hour, String reservation_date,
+                 String user1_id, String user2_id) {
 
         this.reservationId = reservation_id;
         this.reservationHour = reservation_hour;
-        this.reservationDay = reservation_day;
-        this.reservationMonth = reservation_month;
+        this.reservationDate = reservation_date;
         this.user1_id = user1_id;
         this.user2_id = user2_id;
     }
@@ -38,11 +36,7 @@ class Reservations {
     }
 
     public String getReservationDay() {
-        return reservationDay;
-    }
-
-    public String getReservationMonth() {
-        return reservationMonth;
+        return reservationDate;
     }
 
     public String getUser1_id() {

@@ -21,8 +21,8 @@ public class ChooseHourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_hour);
 
-        Intent intent = getIntent();
-        selected_date = intent.getStringExtra("selected_date");
+        Intent intent_2 = getIntent();
+        //selected_date = intent_2.getStringExtra("selected_date");
 
 
         ListView list = (ListView) findViewById(R.id.hour_list);
@@ -49,14 +49,17 @@ public class ChooseHourActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String selected_hour= hour_list.get(position);
 
-                Intent intent = new Intent(getApplicationContext(), ViewHourActivity.class);
-                intent.putExtra("selected_hour", selected_hour);
-                intent.putExtra("selected_date", selected_date);
-                startActivity(intent);
+                Intent intent_2 = new Intent();
+                intent_2.putExtra("selected_hour", selected_hour);
+                setResult(RESULT_OK, intent_2);
+                finish();
             }
         });
+
+
 
     }
 }

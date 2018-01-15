@@ -32,8 +32,11 @@ public class MenuActivity extends AppCompatActivity {
     private String date;
     private Intent intent_go_back;
     private boolean reservation_added=false;
+    private String selected_date;
+    private String selected_hour;
 
     DatabaseReference databaseReservations;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,23 +57,6 @@ public class MenuActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, reservation_list);
         list.setAdapter(adapter);
 
-        btn_add_reservation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChooseDayActivity.class);
-                startActivityForResult(intent,0);
-            }
-        });
-
-        intent_go_back = getIntent();
-        hour = intent_go_back.getStringExtra("hour");
-        date = intent_go_back.getStringExtra("date");
-        reservation_added = intent.getBooleanExtra("reservation_added", false);
-
-        if (reservation_added) {
-        addItem(); }
-
-
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,6 +70,15 @@ public class MenuActivity extends AppCompatActivity {
                 intent.putExtra("player_1_data", player_1_data);
                 intent.putExtra("player_2_data", player_2_data);
                 startActivityForResult(intent, 0);
+
+            }
+        });
+
+        btn_add_reservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_1 = new Intent(getApplicationContext(), ChooseDayActivity.class);
+                startActivityForResult(intent_1,1);
             }
         });
 
@@ -113,19 +108,50 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case 0:
 
-                if (resultCode==RESULT_OK) {
-                    Boolean item_value = data.getBooleanExtra("cancel_item", false);
+            if (requestCode==0) {
 
-                    if (item_value) {
-                        reservation_list.remove(pos);
-                        adapter.notifyDataSetChanged();
+                    if (resultCode == RESULT_OK) {
+                        Boolean item_value = data.getBooleanExtra("cancel_item", false);
+
+                        if (item_value) {
+                            reservation_list.remove(pos);
+                            adapter.notifyDataSetChanged();
+                        }
                     }
+            }
+
+            if (requestCode==1) {
+
+                    if (resultCode == RESULT_OK) {
+                        date = data.getStringExtra("selected_date");
+
+                        Intent intent_2 = new Intent(getApplicationContext(), ChooseHourActivity.class);
+                        //intent_2.putExtra("selected_date", selected_date);
+                        startActivityForResult(intent_2, 2);
+                    }
+            }
+
+            if (requestCode == 2) {
+
+                if (resultCode == RESULT_OK) {
+                    hour = data.getStringExtra("selected_hour");
+
+                    Intent intent_3 = new Intent(getApplicationContext(), ViewHourActivity.class);
+                    intent_3.putExtra("date", date);
+                    intent_3.putExtra("hour", hour);
+                    startActivityForResult(intent_3, 3);
                 }
+            }
+
+
+            if (requestCode==3) {
+                if (resultCode == RESULT_OK) {
+                    reservation_added = data.getBooleanExtra("reservation_added", false);
+
+                    if (reservation_added) {
+                        addItem(); }
+                }
+            }
         }
-    }
-
-
 }

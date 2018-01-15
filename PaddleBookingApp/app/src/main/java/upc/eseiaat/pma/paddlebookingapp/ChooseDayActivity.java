@@ -17,7 +17,6 @@ public class ChooseDayActivity extends AppCompatActivity {
     EditText date;
     DatePickerDialog datePickerDialog;
     Button btn_next;
-    TextView txt_select_day;
     private String selected_date;
 
     @Override
@@ -25,7 +24,7 @@ public class ChooseDayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_day);
 
-        Intent intent = getIntent();
+        Intent intent_1 = getIntent();
 
         date = (EditText) findViewById(R.id.date);
         btn_next = (Button) findViewById(R.id.btn_next);
@@ -61,19 +60,13 @@ public class ChooseDayActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                    selectedDay();
+                Intent intent_1 = new Intent();
+                intent_1.putExtra("selected_date", selected_date);
+                setResult(RESULT_OK, intent_1);
+                finish();
             }
         });
     }
-
-    private void selectedDay() {
-        // (I)
-        Intent intent = new Intent(this, ChooseHourActivity.class);
-        intent.putExtra("selected_date", selected_date);
-        startActivityForResult (intent,0);
-    }
-
 }
 
 
