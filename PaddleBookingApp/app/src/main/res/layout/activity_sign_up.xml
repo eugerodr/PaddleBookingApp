@@ -26,8 +26,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="112dp"
         android:ems="10"
+        android:hint="@string/name"
         android:inputType="textPersonName"
-        android:text="@string/name"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
         android:textStyle="italic" />
@@ -53,8 +53,8 @@
         android:layout_below="@+id/text_age"
         android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="@string/age"
         android:inputType="number"
-        android:text="@string/age"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
         android:textStyle="italic" />
