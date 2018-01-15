@@ -50,9 +50,10 @@ public class MenuActivity extends AppCompatActivity {
         // Mirem si ja hem fet el login -- Pau
         SharedPreferences users = getSharedPreferences(PREFS_NAME, 0);
         login = users.getBoolean("login", false);
+
         if (!login) {
-            Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-            startActivityForResult(intent, 4);
+            SignUp();
+
         }
 
         // (II)
@@ -97,6 +98,11 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
+    private void SignUp() {
+        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+        startActivityForResult(intent, 4);
+    }
+
     @Override
     protected void onStop(){
         super.onStop();
@@ -133,6 +139,9 @@ public class MenuActivity extends AppCompatActivity {
 
             case R.id.log_out:
                 login=false;
+                onStop();
+                SignUp();
+                return super.onOptionsItemSelected(item);
 
             default:
                 return super.onOptionsItemSelected(item);
