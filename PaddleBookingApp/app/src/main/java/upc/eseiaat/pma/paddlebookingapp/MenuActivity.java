@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 
+    private static final String PREFS_NAME = "LoginInfo";
     private ArrayList<String> reservation_list;
     private ArrayAdapter adapter;
     private String data;
@@ -46,7 +47,13 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        compare_user_name();
+        // Mirem si ja hem fet el login -- Pau
+        SharedPreferences users = getSharedPreferences(PREFS_NAME, 0);
+        login = users.getBoolean("login", false);
+        if (!login) {
+            Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivityForResult(intent, 4);
+        }
 
         // (II)
         Intent intent = getIntent();
@@ -61,7 +68,6 @@ public class MenuActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, reservation_list);
         list.setAdapter(adapter);
-
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,6 +93,19 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+
+        // Guardem si hem fet login (FALTA POSAR EL NOM d'USUARI o el ID) -- Pau
+        SharedPreferences users = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = users.edit();
+        editor.putBoolean("login", login);
+        editor.apply();
     }
 
 
@@ -94,15 +113,6 @@ public class MenuActivity extends AppCompatActivity {
         reservation_list.add(String.format(date) + String.format("   ") + String.format(hour));
         adapter.notifyDataSetChanged();
     }
-
-    private void compare_user_name() {
-
-        if (!login) {
-            Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-            startActivityForResult(intent, 4);
-        }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -173,7 +183,8 @@ public class MenuActivity extends AppCompatActivity {
                     boolean reservation_added = data.getBooleanExtra("reservation_added", false);
 
                     if (reservation_added) {
-                        addItem(); }
+                        addItem();
+                    }
                 }
             }
 
@@ -182,9 +193,7 @@ public class MenuActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     login_name = data.getStringExtra("user_name");
                     login_age = data.getIntExtra("user_age", 0);
-
                     login = true;
-
                 }
             }
         }
