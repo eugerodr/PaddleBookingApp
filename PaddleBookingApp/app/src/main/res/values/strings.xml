@@ -29,6 +29,7 @@
     <string name="join">Join</string>
     <string name="my_reservations">My reservations</string>
     <string name="name">Name</string>
+    <string name="log_out">Log out</string>
     <array name="experience_array">
         <item>Beginner</item>
         <item>Intermediate</item>

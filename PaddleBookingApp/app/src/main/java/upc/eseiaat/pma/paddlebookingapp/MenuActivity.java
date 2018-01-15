@@ -1,6 +1,8 @@
 package upc.eseiaat.pma.paddlebookingapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,14 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -30,18 +31,22 @@ public class MenuActivity extends AppCompatActivity {
     private String id;
     private String hour;
     private String date;
-    private Intent intent_go_back;
-    private boolean reservation_added=false;
-    private String selected_date;
-    private String selected_hour;
+
 
     DatabaseReference databaseReservations;
+    private boolean login=false;
+    private String login_name;
+    private int login_age;
+
+    //TODO: arreglar los intents de julia
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        compare_user_name();
 
         // (II)
         Intent intent = getIntent();
@@ -84,9 +89,18 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
+
     private void addItem() {
         reservation_list.add(String.format(date) + String.format("   ") + String.format(hour));
         adapter.notifyDataSetChanged();
+    }
+
+    private void compare_user_name() {
+
+        if (!login) {
+            Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivityForResult(intent, 4);
+        }
     }
 
 
@@ -100,10 +114,19 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Intent intent_menu_to_profile = new Intent(getApplicationContext(), MyProfileActivity.class);
-        intent_menu_to_profile.putExtra("user_id", id);
-        startActivity(intent_menu_to_profile);
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.edit_profile:
+                Intent intent_menu_to_profile = new Intent(getApplicationContext(), MyProfileActivity.class);
+                intent_menu_to_profile.putExtra("user_id", id);
+                startActivityForResult(intent_menu_to_profile, 5);
+                return super.onOptionsItemSelected(item);
+
+            case R.id.log_out:
+                login=false;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -147,10 +170,21 @@ public class MenuActivity extends AppCompatActivity {
 
             if (requestCode==3) {
                 if (resultCode == RESULT_OK) {
-                    reservation_added = data.getBooleanExtra("reservation_added", false);
+                    boolean reservation_added = data.getBooleanExtra("reservation_added", false);
 
                     if (reservation_added) {
                         addItem(); }
+                }
+            }
+
+            if (requestCode == 4) {
+
+                if (resultCode == RESULT_OK) {
+                    login_name = data.getStringExtra("user_name");
+                    login_age = data.getIntExtra("user_age", 0);
+
+                    login = true;
+
                 }
             }
         }

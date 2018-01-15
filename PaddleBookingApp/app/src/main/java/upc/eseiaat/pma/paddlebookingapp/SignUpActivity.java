@@ -1,6 +1,8 @@
 package upc.eseiaat.pma.paddlebookingapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
@@ -31,13 +33,14 @@ public class SignUpActivity extends AppCompatActivity {
     DatabaseReference databaseUsers;
     private String id;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
         databaseUsers = FirebaseDatabase.getInstance().getReference(FirebaseReferences.usersReference);
+
+        Intent intent = getIntent();
 
         edit_name = (EditText) findViewById(R.id.edit_name);
         edit_age = (EditText) findViewById(R.id.edit_age);
@@ -72,7 +75,8 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-        if (!TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(Integer.toString(user_age)) && !TextUtils.isEmpty(Integer.toString(user_level))) {
+        if (!TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(Integer.toString(user_age))
+                && !TextUtils.isEmpty(Integer.toString(user_level))) {
 
             //Create a unic id for each user
             id = databaseUsers.push().getKey();
@@ -81,16 +85,18 @@ public class SignUpActivity extends AppCompatActivity {
 
             databaseUsers.child(id).setValue(user);
 
+
             Toast.makeText(this,R.string.user_added, Toast.LENGTH_LONG).show();
 
         } else {
             Toast.makeText(this,R.string.enter_value, Toast.LENGTH_LONG).show();
         }
 
+        Intent intent = new Intent();
+        intent.putExtra("user_name", user_name);
+        intent.putExtra("user_age", user_age);
+        setResult(RESULT_OK, intent);
+        finish();
 
     }
-
-
-
-
 }

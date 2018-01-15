@@ -98,7 +98,7 @@ public class MyProfileActivity extends AppCompatActivity {
         intent.putExtra("user_name", user_name);
         intent.putExtra("user_age", user_age);
         intent.putExtra("user_level", user_level);
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, 6);
     }
 
     @Override
