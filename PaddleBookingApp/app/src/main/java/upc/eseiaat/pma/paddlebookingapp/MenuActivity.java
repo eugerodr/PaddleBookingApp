@@ -57,8 +57,8 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         // (II)
-        Intent intent = getIntent();
-        id = intent.getStringExtra("user_id");
+        //Intent intent = getIntent();
+        //id = intent.getStringExtra("user_id");
 
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
 
@@ -202,6 +202,7 @@ public class MenuActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     login_name = data.getStringExtra("user_name");
                     login_age = data.getIntExtra("user_age", 0);
+                    id = data.getStringExtra("user_id");
                     login = true;
                 }
             }
