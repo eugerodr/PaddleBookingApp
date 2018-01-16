@@ -27,6 +27,7 @@ public class ViewReservationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
         String player_1_data = intent.getStringExtra("player_1_data");
+        Toast.makeText(this, player_1_data, Toast.LENGTH_SHORT).show();
         String player_2_data = intent.getStringExtra("player_2_data");
 
         TextView date_reservation = (TextView) findViewById(R.id.date_reservation);

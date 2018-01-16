@@ -76,10 +76,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/reservation_date"
-        android:text="@string/player_1"
+        android:padding="10dp"
+        android:text="@string/player_2"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/reservation_player1"

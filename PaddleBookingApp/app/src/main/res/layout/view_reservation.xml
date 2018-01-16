@@ -54,7 +54,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/user_2"
         android:padding="10dp"
-        android:text="@string/player_2"
+        android:text="@string/no_user"
         android:textSize="16sp" />
 
     <TextView

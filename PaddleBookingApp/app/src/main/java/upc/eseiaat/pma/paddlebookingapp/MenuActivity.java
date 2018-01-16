@@ -27,20 +27,16 @@ public class MenuActivity extends AppCompatActivity {
     private ArrayList<String> reservation_list;
     private ArrayAdapter adapter;
     private String data;
-    private String player_1_data="Julia";
+    private String player_1_data;
     private String player_2_data="Marta";
     private int pos;
     private String id;
     private String hour;
     private String date;
-
+    private boolean login=false;
 
     DatabaseReference databaseReservations;
-    private boolean login=false;
     private String login_name;
-    private int login_age;
-
-    //TODO: arreglar los intents de julia
 
 
     @Override
@@ -54,12 +50,11 @@ public class MenuActivity extends AppCompatActivity {
 
         if (!login) {
             SignUp();
-
         }
 
-        // (II)
-        //Intent intent = getIntent();
-        //id = intent.getStringExtra("user_id");
+        else {
+            Toast.makeText(this, R.string.welcome, Toast.LENGTH_SHORT).show();
+        }
 
         databaseReservations = FirebaseDatabase.getInstance().getReference("reservations");
 
@@ -80,7 +75,7 @@ public class MenuActivity extends AppCompatActivity {
                 // (I)
                 Intent intent = new Intent(getApplicationContext(), ViewReservationActivity.class);
                 intent.putExtra("data",  data);
-                intent.putExtra("player_1_data", player_1_data);
+                intent.putExtra("player_1_data", login_name);
                 intent.putExtra("player_2_data", player_2_data);
                 startActivityForResult(intent, 0);
 
@@ -202,11 +197,18 @@ public class MenuActivity extends AppCompatActivity {
 
                 if (resultCode == RESULT_OK) {
                     login_name = data.getStringExtra("user_name");
-                    login_age = data.getIntExtra("user_age", 0);
+                    int login_age = data.getIntExtra("user_age", 0);
                     id = data.getStringExtra("user_id");
                     //Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
                     login = true;
                 }
             }
+
+        if (requestCode == 5) {
+
+            if (resultCode == RESULT_OK) {
+                player_1_data = data.getStringExtra("user_name");
+            }
+        }
         }
 }

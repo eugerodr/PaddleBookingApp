@@ -84,6 +84,11 @@ public class MyProfileActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = new Intent();
+        intent.putExtra("user_name", user_name);
+        setResult(RESULT_OK);
+        finish();
+
     }
 
     private void updateUser(String id, String user_name, int user_age, int user_level) {

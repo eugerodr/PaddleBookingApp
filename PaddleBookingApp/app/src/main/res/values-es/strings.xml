@@ -3,8 +3,8 @@
     <string name="app_name">PaddleBookingApp</string>
     <string name="edit_profile">Editar perfil</string>
     <string name="date_reservation">Hora y Día</string>
-    <string name="player_1">Jugador 1</string>
-    <string name="player_2">Jugador 2</string>
+    <string name="player_1">Usuario</string>
+    <string name="player_2">Contrincante</string>
     <string name="cancel">Cancelar</string>
     <string name="add_reservation">Añadir una reserva</string>
     <string name="confirm">Confirmar</string>
@@ -30,4 +30,7 @@
     <string name="join">Unirme</string>
     <string name="my_reservations">Mis reservas</string>
     <string name="name">Nombre</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="welcome">Bienvenido de nuevo</string>
+    <string name="no_user">Aún no hay un contrincante apuntado a esta hora</string>
 </resources>
