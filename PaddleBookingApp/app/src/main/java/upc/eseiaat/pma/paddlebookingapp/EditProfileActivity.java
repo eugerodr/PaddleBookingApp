@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -72,6 +73,7 @@ public class EditProfileActivity extends AppCompatActivity {
         data.putExtra("user_name", new_user_name);
         data.putExtra("user_age", new_user_age);
         data.putExtra("user_level", new_user_level);
+        //Toast.makeText(this, new_user_name, Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK, data);
         finish();
     }

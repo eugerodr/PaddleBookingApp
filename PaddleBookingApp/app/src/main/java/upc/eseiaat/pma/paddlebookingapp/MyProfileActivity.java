@@ -41,6 +41,7 @@ public class MyProfileActivity extends AppCompatActivity {
         // (II)
         Intent intent_menu_to_profile = getIntent();
         id = intent_menu_to_profile.getStringExtra("user_id");
+        //Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
 
 
         //Referencias de los elementos del Layout
@@ -104,7 +105,7 @@ public class MyProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case 0:
+            case 6:
                 if (resultCode == AppCompatActivity.RESULT_OK) {
                     user_name = data.getStringExtra("user_name");
                     txt_user_name.setText(user_name);

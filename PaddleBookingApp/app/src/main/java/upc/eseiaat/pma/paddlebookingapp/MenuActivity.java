@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -203,6 +204,7 @@ public class MenuActivity extends AppCompatActivity {
                     login_name = data.getStringExtra("user_name");
                     login_age = data.getIntExtra("user_age", 0);
                     id = data.getStringExtra("user_id");
+                    //Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
                     login = true;
                 }
             }
