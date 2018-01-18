@@ -204,11 +204,5 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
 
-        if (requestCode == 5) {
-
-            if (resultCode == RESULT_OK) {
-                player_1_data = data.getStringExtra("user_name");
-            }
-        }
         }
 }
